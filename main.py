@@ -2,11 +2,11 @@
 from tkinter import *
 
 
-def write_sym(sym):
+def write_sym(sym):  # function to write symbols to entry widget
     result.insert(END, sym)
 
 
-def calc():
+def calc():  # function that calculate this input
     __result = result.get()
     ev = eval(__result)
     result.delete(0, END)
@@ -16,7 +16,7 @@ def calc():
         result.insert(0, str(ev))
 
 
-def clear():
+def clear():  # clear input prompt
     result.delete(0, END)
 
 
@@ -25,6 +25,8 @@ root.title('simple')
 
 master = Frame(root, width=300, height=350, bg='gray')
 result = Entry(master, bg='#939393', border=0, fg='#FFF')
+
+# Buttons
 b1 = Button(master, text='1', command=lambda: write_sym('1'),
             width=7, height=2, bg='#004', fg='#FFF')
 
@@ -72,10 +74,11 @@ dot = Button(master, text=".", command=lambda: write_sym('.'),
 
 equ = Button(master, text="=", command=lambda: calc(),
              width=7, height=2, bg='#004', fg='#FFF')
+
 cls = Button(master, text="C", command=clear,
              width=7, height=2, bg="#004", fg="#FFF")
 
-
+# Packing whole thing to place
 result.grid(row=0, columnspan=4, ipadx=50)
 b1.grid(row=1, column=0)
 b2.grid(row=1, column=1)
